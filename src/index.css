@@ -1,0 +1,130 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  padding: 2rem;
+}
+
+/* Page title */
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+/* Main flex container */
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+/* Shared styling for sections */
+.main-sections {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Left side — form section */
+.main-sections.left {
+  flex: 1; /* Wider */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Right side — CV preview */
+.main-sections.right {
+  flex: 0.8; /* Narrower */
+  min-height: 400px;
+  position: sticky;
+  top: 2rem;
+}
+
+/* Form styling inside General, Education, Practical */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #444;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: "Inter", sans-serif;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.add-exp {
+  color: #007bff;
+  background-color: white;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* CV preview look */
+.main-sections.right {
+  background-color: #fafafa;
+  border: 2px dashed #ddd;
+  text-align: center;
+  padding: 2rem;
+  color: #555;
+}
+
+/* Responsive — stack vertically */
+@media (max-width: 900px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .main-sections.right {
+    position: static;
+  }
+}
