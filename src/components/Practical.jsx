@@ -1,28 +1,29 @@
-import '../index.css'
+import { useState } from "react";
+import "../index.css";
+import PracticalExp from "./PracticalExp";
 
 export default function Practical() {
-    return (
-        <div className="form-wrapper">
-            <form className="cv-form">
-            <h2>Practical Experience</h2>
+  const [expCount, setExpCount] = useState(1);
+  function handleAddEmployer(e) {
+    e.preventDefault();
+    setExpCount((prev) => prev + 1);
+  }
+  let experiences = [];
+  for (let i = 0; i < expCount; i++) {
+    experiences.push(<PracticalExp key={i} />);
+  }
 
-            <label htmlFor="name">Company name</label>
-            <input type="text" id="companyName" placeholder="Enter your company name" />
+  return (
+    <div className="form-wrapper">
+      <form className="cv-form">
+        <h2>Practical Experience</h2>
+        {experiences}
 
-            <label htmlFor="email">Position/Title</label>
-            <input type="email" id="title" placeholder="Enter your position/title" />
-
-            <label htmlFor="phone">Date Employed</label>
-            <input type="text" id="dateEmployed" placeholder="Enter date employed" />
-
-            <label htmlFor="summary">Responsibilities</label>
-            <textarea id="summary" placeholder="Briefly describe your responsibilities and tasks during this employment"></textarea>
-
-            <button className='add-exp'>✚ Add another employer</button>
-            <button type="submit">Save</button>
-            </form>
-
-            
-        </div>
-    )
+        <button className="add-exp" onClick={handleAddEmployer}>
+          ✚ Add another employer
+        </button>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  );
 }
