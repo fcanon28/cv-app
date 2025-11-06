@@ -38,7 +38,7 @@ h1 {
 
 /* Left side — form section */
 .main-sections.left {
-  flex: 1; /* Wider */
+  flex: 0.75; /* Wider */
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -46,7 +46,7 @@ h1 {
 
 /* Right side — CV preview */
 .main-sections.right {
-  flex: 0.8; /* Narrower */
+  flex: 1; /* Narrower */
   min-height: 400px;
   position: sticky;
   top: 2rem;
