@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import "../index.css";
 import PracticalExp from "./PracticalExp";
 
-export default function Practical({ handleSubmit, setPracticalInfo }) {
+export default function Practical({
+  handleSubmit,
+  setPracticalInfo,
+  isPracticalInfoSaved,
+  setIsPracticalInfoSaved,
+}) {
   const [experiences, setExperiences] = useState([
     {
       companyName: "",
@@ -11,7 +16,6 @@ export default function Practical({ handleSubmit, setPracticalInfo }) {
       summary: "",
     },
   ]);
-  const [isPracticalInfoSaved, setIsPracticalInfoSaved] = useState(false);
 
   function handleAddEmployer() {
     setExperiences((prev) => [

@@ -13,6 +13,7 @@ function App() {
   const [isEducationalInfoSaved, setIsEducationalInfoSaved] = useState(false);
   const [editEducationalInfo, setEditEducationalInfo] = useState("");
   const [practicalInfo, setPracticalInfo] = useState([]);
+  const [isPracticalInfoSaved, setIsPracticalInfoSaved] = useState(false);
   
   function handleGenInfoSubmit(e) {
     e.preventDefault();
@@ -44,6 +45,11 @@ function App() {
     e.preventDefault();
   }
 
+  function handlePracticalInfoEdit(e) {
+    e.preventDefault();
+    setIsPracticalInfoSaved(false)
+  }
+
 
   return (
     <>
@@ -65,6 +71,8 @@ function App() {
           <Practical
             handleSubmit={handlePracticalSubmit}
             setPracticalInfo={setPracticalInfo}
+            isPracticalInfoSaved={isPracticalInfoSaved}
+            setIsPracticalInfoSaved={setIsPracticalInfoSaved}
           />
         </div>
 
@@ -75,6 +83,7 @@ function App() {
             educationalInfo={educationalInfo}
             handleEducationalInfoEdit={handleEducationalInfoEdit}
             practicalInfo={practicalInfo}
+            handlePracticalInfoEdit={handlePracticalInfoEdit}
           />
         </div>
       </div>

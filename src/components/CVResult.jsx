@@ -7,11 +7,19 @@ export default function CVResult({
   educationalInfo,
   handleEducationalInfoEdit,
   practicalInfo,
+  handlePracticalInfoEdit,
 }) {
+  if (
+    generalInfo.name == null &&
+    educationalInfo.school == null &&
+    practicalInfo[0] == null
+  ) {
+    return <p>Generating your CV...</p>;
+  }
 
   return (
     <div className="cv">
-      {generalInfo.name ? (
+      {generalInfo.name && (
         <>
           <h2>{generalInfo.name}</h2>
           <p>
@@ -22,8 +30,6 @@ export default function CVResult({
             <FaEdit />
           </button>
         </>
-      ) : (
-        <p>Generating your CV...</p>
       )}
 
       {educationalInfo.school && (
@@ -55,6 +61,13 @@ export default function CVResult({
               <p>{info.title}</p>
               <p>{info.dateEmployed}</p>
               <p>{info.summary}</p>
+              <button
+                type="button"
+                name="edit"
+                onClick={handlePracticalInfoEdit}
+              >
+                <FaEdit />
+              </button>
             </div>
           ))}
         </section>
