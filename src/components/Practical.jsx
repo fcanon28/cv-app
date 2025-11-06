@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../index.css";
+import "../styles/index.css";
 import PracticalExp from "./PracticalExp";
 
 export default function Practical({

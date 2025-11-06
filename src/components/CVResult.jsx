@@ -1,4 +1,4 @@
-import "../index.css";
+import "../styles/index.css";
 import { FaEdit } from "react-icons/fa";
 
 export default function CVResult({

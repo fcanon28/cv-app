@@ -1,4 +1,4 @@
-import "../index.css";
+import "../styles/index.css";
 
 export default function PracticalExp({ index, data, onChange, isDisabled }) {
   function handleInput(e) {
