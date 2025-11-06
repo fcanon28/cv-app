@@ -12,8 +12,9 @@ function App() {
   const [educationalInfo, setEducationalInfo] = useState("");
   const [isEducationalInfoSaved, setIsEducationalInfoSaved] = useState(false);
   const [editEducationalInfo, setEditEducationalInfo] = useState("");
-
-  function handleSubmit(e) {
+  const [practicalInfo, setPracticalInfo] = useState([]);
+  
+  function handleGenInfoSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const formJson = Object.fromEntries(formData.entries());
@@ -39,13 +40,18 @@ function App() {
     setEditEducationalInfo(educationalInfo);
   }
 
+  function handlePracticalSubmit(e) {
+    e.preventDefault();
+  }
+
+
   return (
     <>
       <h1>CV Generator</h1>
       <div className="main-container">
         <div className="main-sections left">
           <General
-            handleSubmit={handleSubmit}
+            handleSubmit={handleGenInfoSubmit}
             isGeneralInfoSaved={isGeneralInfoSaved}
             editGeneralInfo={editGeneralInfo}
             setEditGeneralInfo={setEditGeneralInfo}
@@ -56,7 +62,10 @@ function App() {
             editEducationalInfo={editEducationalInfo}
             setEditEducationalInfo={setEditEducationalInfo}
           />
-          <Practical />
+          <Practical
+            handleSubmit={handlePracticalSubmit}
+            setPracticalInfo={setPracticalInfo}
+          />
         </div>
 
         <div className="main-sections right">
@@ -65,6 +74,7 @@ function App() {
             handleGenInfoEdit={handleGenInfoEdit}
             educationalInfo={educationalInfo}
             handleEducationalInfoEdit={handleEducationalInfoEdit}
+            practicalInfo={practicalInfo}
           />
         </div>
       </div>

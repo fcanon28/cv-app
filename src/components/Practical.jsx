@@ -1,28 +1,70 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../index.css";
 import PracticalExp from "./PracticalExp";
 
-export default function Practical() {
-  const [expCount, setExpCount] = useState(1);
-  function handleAddEmployer(e) {
-    e.preventDefault();
-    setExpCount((prev) => prev + 1);
+export default function Practical({ handleSubmit, setPracticalInfo }) {
+  const [experiences, setExperiences] = useState([
+    {
+      companyName: "",
+      title: "",
+      dateEmployed: "",
+      summary: "",
+    },
+  ]);
+  const [isPracticalInfoSaved, setIsPracticalInfoSaved] = useState(false);
+
+  function handleAddEmployer() {
+    setExperiences((prev) => [
+      ...prev,
+      { companyName: "", title: "", dateEmployed: "", summary: "" },
+    ]);
   }
-  let experiences = [];
-  for (let i = 0; i < expCount; i++) {
-    experiences.push(<PracticalExp key={i} />);
+
+  function handleChange(index, field, value) {
+    setExperiences((prev) => {
+      const updated = [...prev];
+      updated[index][field] = value;
+      return updated;
+    });
+  }
+
+  function handlePracticalSubmit(e) {
+    e.preventDefault();
+    setPracticalInfo(experiences);
+    setIsPracticalInfoSaved(true);
+    // handleSubmit(e)
   }
 
   return (
     <div className="form-wrapper">
-      <form className="cv-form">
+      <form className="cv-form" onSubmit={handlePracticalSubmit}>
         <h2>Practical Experience</h2>
-        {experiences}
+        {experiences.map((exp, index) => (
+          <PracticalExp
+            key={index}
+            index={index}
+            data={exp}
+            onChange={handleChange}
+            isDisabled={isPracticalInfoSaved}
+          />
+        ))}
 
-        <button className="add-exp" onClick={handleAddEmployer}>
-          ✚ Add another employer
-        </button>
-        <button type="submit">Save</button>
+        {isPracticalInfoSaved ? (
+          <p style={{ color: "#5cb85c" }}>
+            Educational information successfully saved!
+          </p>
+        ) : (
+          <>
+            <button
+              type="button"
+              className="add-exp"
+              onClick={handleAddEmployer}
+            >
+              ✚ Add another employer
+            </button>
+            <button type="submit">Save</button>
+          </>
+        )}
       </form>
     </div>
   );

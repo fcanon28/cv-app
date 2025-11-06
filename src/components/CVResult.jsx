@@ -5,8 +5,10 @@ export default function CVResult({
   generalInfo,
   handleGenInfoEdit,
   educationalInfo,
-  handleEducationalInfoEdit
+  handleEducationalInfoEdit,
+  practicalInfo,
 }) {
+
   return (
     <div className="cv">
       {generalInfo.name ? (
@@ -41,6 +43,20 @@ export default function CVResult({
               <FaEdit />
             </button>
           </div>
+        </section>
+      )}
+
+      {practicalInfo[0] && (
+        <section>
+          <h3>Practical Experience</h3>
+          {practicalInfo.map((info, index) => (
+            <div key={index}>
+              <p>{info.companyName}</p>
+              <p>{info.title}</p>
+              <p>{info.dateEmployed}</p>
+              <p>{info.summary}</p>
+            </div>
+          ))}
         </section>
       )}
     </div>
